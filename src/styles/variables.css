@@ -1,3 +1,31 @@
 :root {
-    --primary-color: #007bff;
+  /* Colors */
+  --pp-primary-color: #007bff;
+  --pp-primary-on-color: white;
+
+  /* Gaps */
+  --pp-gap-xs: .125rem;
+  --pp-gap-sm: .25rem;
+  --pp-gap-md: .5rem;
+  --pp-gap-lg: 1rem;
+  --pp-gap-xl: 2rem;
+
+  /* Font sizes */
+  --pp-font-size-xs: .75rem;
+  --pp-font-size-sm: .875rem;
+  --pp-font-size-md: 1rem;
+  --pp-font-size-lg: 1.25rem;
+  --pp-font-size-xl: 1.5rem;
+
+  /* Font weights */
+  --pp-font-weight-normal: 400;
+  --pp-font-weight-bold: 700;
+
+  /* Border radius */
+  --pp-border-radius-xs: .125rem;
+  --pp-border-radius-sm: .25rem;
+  --pp-border-radius-md: .5rem;
+  --pp-border-radius-lg: 1rem;
+  --pp-border-radius-xl: 2rem;
+
 }
