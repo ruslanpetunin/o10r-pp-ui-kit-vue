@@ -1,18 +1,18 @@
 {
   "name": "orchestrator-pp-vue-ui-kit",
   "version": "1.0.0",
-  "main": "dist/vue-ui-kit.umd.js",
-  "module": "dist/vue-ui-kit.es.js",
-  "types": "dist/entry.d.ts",
+  "main": "dist/orchestrator-pp-vue-ui-kit.umd.js",
+  "module": "dist/orchestrator-pp-vue-ui-kit.es.js",
+  "types": "dist/index.d.ts",
   "files": ["dist"],
   "scripts": {
     "build": "vite build && vue-tsc --emitDeclarationOnly"
   },
   "exports": {
     ".": {
-      "types": "./dist/entry.d.ts",
-      "import": "./dist/vue-ui-kit.es.js",
-      "require": "./dist/vue-ui-kit.umd.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/orchestrator-pp-vue-ui-kit.es.js",
+      "require": "./dist/orchestrator-pp-vue-ui-kit.umd.js"
     }
   },
   "peerDependencies": {

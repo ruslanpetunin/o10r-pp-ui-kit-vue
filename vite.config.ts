@@ -6,7 +6,7 @@ export default defineConfig({
     plugins: [vue()],
     build: {
         lib: {
-            entry: path.resolve(__dirname, 'src/entry.ts'),
+            entry: path.resolve(__dirname, 'src/index.ts'),
             name: 'OrchestratorPpVueUiKit',
             fileName: (format) => `orchestrator-pp-vue-ui-kit.${format}.js`
         },
