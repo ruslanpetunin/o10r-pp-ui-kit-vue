@@ -1,6 +1,6 @@
 import type { App } from 'vue';
 import * as components from './components';
-import './styles/variables.css';
+import './styles/main.css';
 
 export * from './components';
 
