@@ -15,7 +15,8 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/orchestrator-pp-vue-ui-kit.es.js",
       "require": "./dist/orchestrator-pp-vue-ui-kit.umd.js"
-    }
+    },
+    "./style.css": "./dist/orchestrator-pp-vue-ui-kit.css"
   },
   "peerDependencies": {
     "vue": "^3.5.17"
