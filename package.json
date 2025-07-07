@@ -1,6 +1,6 @@
 {
   "name": "orchestrator-pp-vue-ui-kit",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/orchestrator-pp-vue-ui-kit.umd.js",
   "module": "dist/orchestrator-pp-vue-ui-kit.es.js",
   "types": "dist/index.d.ts",
