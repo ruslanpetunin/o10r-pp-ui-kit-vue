@@ -7,6 +7,10 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruslanpetunin/orchestrator-pp-vue-ui-kit"
+  },
   "scripts": {
     "build": "vite build && vue-tsc --emitDeclarationOnly"
   },
