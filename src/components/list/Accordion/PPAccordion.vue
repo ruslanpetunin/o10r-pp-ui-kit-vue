@@ -21,7 +21,7 @@ provideAccordion(props.multiple);
 
 <style scoped>
 .accordion {
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid var(--pp-secondary-light-color);
+  border-radius: var(--pp-border-radius-md);
 }
 </style>

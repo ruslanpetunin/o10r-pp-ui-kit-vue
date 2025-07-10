@@ -2,13 +2,18 @@
   /* Colors */
   --pp-primary-color: #007bff;
   --pp-primary-on-color: white;
+  --pp-secondary-color: #5c5656;
+  --pp-secondary-light-color: #e9e9e9;
+  --pp-error-color: #e74c3c;
+  --pp-error-light-color: #f3e6e5;
+  --pp-text-color: #333;
 
   /* Gaps */
-  --pp-gap-xs: .125rem;
-  --pp-gap-sm: .25rem;
-  --pp-gap-md: .5rem;
-  --pp-gap-lg: 1rem;
-  --pp-gap-xl: 2rem;
+  --pp-gap-xs: .25rem;
+  --pp-gap-sm: .5rem;
+  --pp-gap-md: 1rem;
+  --pp-gap-lg: 2rem;
+  --pp-gap-xl: 4rem;
 
   /* Font sizes */
   --pp-font-size-xs: .75rem;

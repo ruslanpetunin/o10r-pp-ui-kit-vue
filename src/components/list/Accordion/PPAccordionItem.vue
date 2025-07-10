@@ -87,7 +87,7 @@ function onLeave(el: Element) {
 
 <style scoped>
 .accordion-item + .accordion-item {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid var(--pp-secondary-color);
 }
 
 .accordion-header {
@@ -95,7 +95,7 @@ function onLeave(el: Element) {
   text-align: left;
   padding: 1rem;
   font-weight: bold;
-  background: #f7f7f7;
+  background: var(--pp-secondary-light-color);
   border: none;
   cursor: pointer;
 }
