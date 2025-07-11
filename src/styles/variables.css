@@ -33,4 +33,9 @@
   --pp-border-radius-lg: 1rem;
   --pp-border-radius-xl: 2rem;
 
+  /* Button */
+  --pp-primary-color-hover: #0069d9;
+  --pp-primary-color-active: #005cbf;
+  --pp-disabled-opacity: 0.65;
+
 }
