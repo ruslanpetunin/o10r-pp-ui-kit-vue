@@ -3,8 +3,8 @@ import type { AccordionContext } from './../types/accordion';
 
 const ACCORDION_KEY = Symbol('accordion');
 
-export function provideAccordion(multiple = false) {
-  const openItems = ref(new Set<number>());
+export function provideAccordion(multiple = false, defaultOpen: number[] = []) {
+  const openItems = ref(new Set<number>(defaultOpen));
 
   function toggleItem(index: number) {
     if (openItems.value.has(index)) {

@@ -1,15 +1,16 @@
 <template>
   <div class="input-wrapper">
     <div :class="['input-container', { 'has-error': hasError }]">
-      <label :for="id" :class="['floating-label', { active: isFocused || modelValue }]">
+      <label :for="id" :class="['floating-label', { active: isFocused || value }]">
         {{ label }}
       </label>
 
       <input
         :id="id"
         class="input-element"
+        :name="name"
         :type="type"
-        :value="modelValue"
+        :value="value"
         @input="onInput"
         @focus="isFocused = true"
         @blur="isFocused = false"
@@ -27,23 +28,21 @@ import { ref, computed } from 'vue';
 
 const props = defineProps<{
   type: 'text' | 'number' | 'email' | 'password' | 'tel',
-  modelValue: string;
+  name: string,
   label: string;
   error?: string;
 }>();
 
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void;
-}>();
-
 const id = `input-${Math.random().toString(36).substring(2, 10)}`;
+const value = ref<string>('');
 const isFocused = ref(false);
 const hasError = computed(() => !!props.error);
 
-function onInput(event: Event) {
+const onInput = (event: Event) => {
   const target = event.target as HTMLInputElement;
-  emit('update:modelValue', target.value);
-}
+
+  value.value = target.value;
+};
 </script>
 
 <style scoped>
@@ -58,7 +57,6 @@ function onInput(event: Event) {
   border: 1px solid var(--pp-secondary-light-color);
   background-color: transparent;
   border-radius: var(--pp-border-radius-md);
-  padding: var(--pp-gap-md) var(--pp-gap-md) var(--pp-gap-sm) var(--pp-gap-md);
   transition: border-color 0.2s, background-color 0.2s;
 }
 
@@ -75,7 +73,7 @@ function onInput(event: Event) {
   width: 100%;
   border: none;
   outline: none;
-  padding: 0;
+  padding: var(--pp-gap-md) var(--pp-gap-md) var(--pp-gap-sm) var(--pp-gap-md);
   background: transparent;
   font-size: var(--pp-font-size-md);
   color: var(--pp-text-color);

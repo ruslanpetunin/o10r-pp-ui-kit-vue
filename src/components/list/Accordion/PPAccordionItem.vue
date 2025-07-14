@@ -40,11 +40,19 @@ const props = defineProps<{
   title: string;
 }>();
 
+const emit = defineEmits<{
+  (e: 'open', index: number): void;
+}>();
+
 const { toggleItem, isItemOpen } = useAccordion();
 const open = computed(() => isItemOpen(props.index));
 
 function onHeaderClick() {
   toggleItem(props.index);
+
+  if (open.value) {
+    emit('open', props.index);
+  }
 }
 
 function onBeforeEnter(el: Element) {
