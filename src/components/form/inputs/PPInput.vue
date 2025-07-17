@@ -13,7 +13,7 @@
         :value="value"
         @input="onInput"
         @focus="isFocused = true"
-        @blur="isFocused = false"
+        @blur="(isFocused = false) || emit('blur')"
       />
     </div>
 
@@ -33,6 +33,10 @@ const props = defineProps<{
   error?: string;
 }>();
 
+const emit = defineEmits<{
+  (event: 'blur'): void;
+}>();
+
 const id = `input-${Math.random().toString(36).substring(2, 10)}`;
 const value = ref<string>('');
 const isFocused = ref(false);
@@ -49,6 +53,7 @@ const onInput = (event: Event) => {
 .input-wrapper {
   width: 100%;
   display: flex;
+  flex-direction: column;
 }
 
 .input-container {
@@ -90,7 +95,7 @@ const onInput = (event: Event) => {
 }
 
 .floating-label.active {
-  top: calc(var(--pp-gap-sm) / 5);
+  top: calc(var(--pp-gap-xs) / 5);
   font-size: var(--pp-font-size-xs);
 }
 

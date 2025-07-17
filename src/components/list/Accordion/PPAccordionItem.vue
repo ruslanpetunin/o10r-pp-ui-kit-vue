@@ -7,7 +7,7 @@
       :aria-controls="'content-' + props.index"
       :id="'header-' + props.index"
     >
-      {{ props.title }}
+      <slot name="header" />
     </button>
 
     <Transition
@@ -24,7 +24,7 @@
         :id="'content-' + props.index"
       >
         <div>
-          <slot />
+          <slot name="body"/>
         </div>
       </div>
     </Transition>
@@ -37,7 +37,6 @@ import useAccordion from './../../../composables/useAccordion';
 
 const props = defineProps<{
   index: number;
-  title: string;
 }>();
 
 const emit = defineEmits<{
@@ -99,8 +98,10 @@ function onLeave(el: Element) {
 }
 
 .accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  text-align: left;
   padding: 1rem;
   font-weight: bold;
   background: var(--pp-secondary-light-color);
