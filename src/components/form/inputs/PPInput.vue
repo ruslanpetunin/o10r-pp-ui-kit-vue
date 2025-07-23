@@ -6,8 +6,8 @@
       </label>
 
       <input
-        :id="id"
         class="input-element"
+        :id="id"
         :name="name"
         :type="type"
         :value="value"
@@ -17,24 +17,27 @@
       />
     </div>
 
-    <div class="error-message">
-      <span v-if="hasError">{{ error }}</span>
+    <div v-if="hasError" class="error-message">
+      <span>{{ error }}</span>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed } from 'vue'
+import useMask from './../../../composables/useMask';
 
 const props = defineProps<{
   type: 'text' | 'number' | 'email' | 'password' | 'tel',
   name: string,
   label: string;
   error?: string;
+  mask?: string | ((value: string) => string);
 }>();
 
 const emit = defineEmits<{
   (event: 'blur'): void;
+  (event: 'input', value: string): void;
 }>();
 
 const id = `input-${Math.random().toString(36).substring(2, 10)}`;
@@ -45,7 +48,17 @@ const hasError = computed(() => !!props.error);
 const onInput = (event: Event) => {
   const target = event.target as HTMLInputElement;
 
-  value.value = target.value;
+  if (typeof props.mask === 'string') {
+    const result = useMask(props.mask, target);
+
+    value.value = result.maskedValue;
+
+    emit('input', result.unmaskedValue);
+  } else {
+    value.value = props.mask ? props.mask(target.value) : target.value;
+
+    emit('input', value.value);
+  }
 };
 </script>
 
