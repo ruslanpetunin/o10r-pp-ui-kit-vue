@@ -7,3 +7,4 @@ export { default as PPAccordionItem } from './list/Accordion/PPAccordionItem.vue
 export { default as PPGrid } from './layout/PPGrid.vue';
 export { default as PPGridRow } from './layout/PPGridRow.vue';
 export { default as PPGridCol } from './layout/PPGridCol.vue';
+export { default as PPModal } from './overlay/PPModal.vue';
