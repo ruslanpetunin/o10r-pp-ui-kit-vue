@@ -6,7 +6,7 @@
           <slot name="header" />
         </header>
         <div class="pp-modal-body">
-          <slot />
+          <slot name="body" />
         </div>
         <footer class="pp-modal-footer">
           <slot name="footer" />
@@ -18,8 +18,8 @@
 
 <script setup lang="ts">
 const props = withDefaults(
-  defineProps<{ modelValue: boolean; closable?: boolean }>(),
-  { closable: true }
+  defineProps<{ modelValue?: boolean; closable?: boolean }>(),
+  { modelValue: true, closable: true }
 );
 const emit = defineEmits<{ (e: 'update:modelValue', value: boolean): void }>();
 
@@ -38,7 +38,7 @@ function handleClose() {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 10000;
 }
 
 .pp-modal {
