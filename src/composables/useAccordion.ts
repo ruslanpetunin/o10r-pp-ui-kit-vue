@@ -3,23 +3,23 @@ import type { AccordionContext } from './../types/accordion';
 
 const ACCORDION_KEY = Symbol('accordion');
 
-export function provideAccordion(multiple = false, defaultOpen: number[] = []) {
-  const openItems = ref(new Set<number>(defaultOpen));
+export function provideAccordion(multiple = false, defaultOpenIds: string[] = []) {
+  const openItems = ref(new Set<string>(defaultOpenIds));
 
-  function toggleItem(index: number) {
-    if (openItems.value.has(index)) {
-      openItems.value.delete(index);
+  function toggleItem(id: string) {
+    if (openItems.value.has(id)) {
+      openItems.value.delete(id);
     } else {
       if (!multiple) {
         openItems.value.clear();
       }
 
-      openItems.value.add(index);
+      openItems.value.add(id);
     }
   }
 
-  function isItemOpen(index: number) {
-    return openItems.value.has(index);
+  function isItemOpen(id: string) {
+    return openItems.value.has(id);
   }
 
   const context: AccordionContext = {

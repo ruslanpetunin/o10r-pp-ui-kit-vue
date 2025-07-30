@@ -1,16 +1,18 @@
 <template>
   <div class="input-wrapper">
     <div :class="['input-container', { 'has-error': hasError }]">
-      <label :for="id" :class="['floating-label', { active: isFocused || value }]">
+      <label :for="id" :class="['floating-label', { active: isFocused || valueRef }]">
         {{ label }}
       </label>
 
       <input
+        ref="inputRef"
         class="input-element"
         :id="id"
         :name="name"
         :type="type"
-        :value="value"
+        :value="valueRef"
+        :disabled="disabled"
         @input="onInput"
         @focus="isFocused = true"
         @blur="(isFocused = false) || emit('blur')"
@@ -24,13 +26,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import useMask from './../../../composables/useMask';
 
 const props = defineProps<{
   type: 'text' | 'number' | 'email' | 'password' | 'tel',
   name: string,
   label: string;
+  disabled?: boolean;
+  value?: string;
   error?: string;
   mask?: string | ((value: string) => string);
 }>();
@@ -41,7 +45,8 @@ const emit = defineEmits<{
 }>();
 
 const id = `input-${Math.random().toString(36).substring(2, 10)}`;
-const value = ref<string>('');
+const inputRef = ref<HTMLInputElement | null>(null);
+const valueRef = ref<string>('');
 const isFocused = ref(false);
 const hasError = computed(() => !!props.error);
 
@@ -51,15 +56,29 @@ const onInput = (event: Event) => {
   if (typeof props.mask === 'string') {
     const result = useMask(props.mask, target);
 
-    value.value = result.maskedValue;
+    valueRef.value = result.maskedValue;
 
     emit('input', result.unmaskedValue);
   } else {
-    value.value = props.mask ? props.mask(target.value) : target.value;
+    valueRef.value = props.mask ? props.mask(target.value) : target.value;
 
-    emit('input', value.value);
+    emit('input', valueRef.value);
   }
 };
+
+onMounted(
+  () => {
+    if (inputRef.value && props.value) {
+      const fakeEvent = {
+        target: {
+          value: props.value,
+        },
+      } as unknown as Event;
+
+      onInput(fakeEvent);
+    }
+  }
+);
 </script>
 
 <style scoped>

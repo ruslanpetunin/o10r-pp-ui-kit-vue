@@ -10,14 +10,14 @@ import { provideAccordion } from './../../../composables/useAccordion';
 const props = withDefaults(
   defineProps<{
     multiple?: boolean;
-    defaultOpen?: number[];
+    defaultOpenIds?: string[];
   }>(),
   {
     multiple: false,
   }
 );
 
-provideAccordion(props.multiple, props.defaultOpen);
+provideAccordion(props.multiple, props.defaultOpenIds);
 </script>
 
 <style scoped>

@@ -4,8 +4,8 @@
       class="accordion-header"
       @click="onHeaderClick"
       :aria-expanded="open"
-      :aria-controls="'content-' + props.index"
-      :id="'header-' + props.index"
+      :aria-controls="'content-' + props.id"
+      :id="'header-' + props.id"
     >
       <slot name="header" />
     </button>
@@ -20,8 +20,8 @@
       <div
         v-show="open"
         class="accordion-content"
-        :aria-labelledby="'header-' + props.index"
-        :id="'content-' + props.index"
+        :aria-labelledby="'header-' + props.id"
+        :id="'content-' + props.id"
       >
         <div>
           <slot name="body"/>
@@ -36,21 +36,21 @@ import { computed } from 'vue';
 import useAccordion from './../../../composables/useAccordion';
 
 const props = defineProps<{
-  index: number;
+  id: string;
 }>();
 
 const emit = defineEmits<{
-  (e: 'open', index: number): void;
+  (e: 'open', id: string): void;
 }>();
 
 const { toggleItem, isItemOpen } = useAccordion();
-const open = computed(() => isItemOpen(props.index));
+const open = computed(() => isItemOpen(props.id));
 
 function onHeaderClick() {
-  toggleItem(props.index);
+  toggleItem(props.id);
 
   if (open.value) {
-    emit('open', props.index);
+    emit('open', props.id);
   }
 }
 
