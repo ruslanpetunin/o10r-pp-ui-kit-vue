@@ -8,7 +8,7 @@ export default defineConfig({
         lib: {
             entry: path.resolve(__dirname, 'src/index.ts'),
             name: 'OrchestratorPpVueUiKit',
-            fileName: (format) => `orchestrator-pp-vue-ui-kit.${format}.js`
+            fileName: (format) => `o10r-pp-ui-kit-vue.${format}.js`
         },
         rollupOptions: {
             external: ['vue'],

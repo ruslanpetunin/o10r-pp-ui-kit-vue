@@ -1,4 +1,4 @@
-# orchestrator-pp-vue-ui-kit
+# o10r-pp-ui-kit-vue
 
 ## Grid Components
 

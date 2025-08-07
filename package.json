@@ -1,15 +1,15 @@
 {
-  "name": "orchestrator-pp-vue-ui-kit",
-  "version": "3.1.0",
-  "main": "dist/orchestrator-pp-vue-ui-kit.umd.js",
-  "module": "dist/orchestrator-pp-vue-ui-kit.es.js",
+  "name": "o10r-pp-ui-kit-vue",
+  "version": "0.0.0",
+  "main": "dist/o10r-pp-ui-kit-vue.umd.js",
+  "module": "dist/o10r-pp-ui-kit-vue.es.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ruslanpetunin/orchestrator-pp-vue-ui-kit"
+    "url": "git+https://github.com/ruslanpetunin/o10r-pp-ui-kit-vue"
   },
   "scripts": {
     "build": "vite build && vue-tsc --emitDeclarationOnly"
@@ -17,10 +17,10 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/orchestrator-pp-vue-ui-kit.es.js",
-      "require": "./dist/orchestrator-pp-vue-ui-kit.umd.js"
+      "import": "./dist/o10r-pp-ui-kit-vue.es.js",
+      "require": "./dist/o10r-pp-ui-kit-vue.umd.js"
     },
-    "./style.css": "./dist/orchestrator-pp-vue-ui-kit.css"
+    "./style.css": "./dist/o10r-pp-ui-kit-vue.css"
   },
   "peerDependencies": {
     "vue": "^3.5.17"
@@ -32,3 +32,4 @@
     "vue-tsc": "^3.0.1"
   }
 }
+
