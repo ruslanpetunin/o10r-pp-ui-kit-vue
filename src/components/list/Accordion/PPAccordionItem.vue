@@ -99,7 +99,7 @@ function onLeave(el: Element) {
 
 .accordion-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   width: 100%;
   padding: 1rem;
@@ -109,11 +109,17 @@ function onLeave(el: Element) {
   cursor: pointer;
 }
 
-.accordion-header:focus {
-  outline: 2px solid #007acc;
-}
-
 .accordion-content>div {
   padding: 1rem;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent; /* убирает серый/синий фон на мобилках */
+  outline: none; /* убираем синюю обводку */
+}
+
+button:active {
+  background: inherit; /* убираем смену цвета при нажатии */
+  color: inherit;
 }
 </style>
