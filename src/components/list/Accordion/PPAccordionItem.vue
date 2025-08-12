@@ -35,22 +35,33 @@
 import { computed } from 'vue';
 import useAccordion from './../../../composables/useAccordion';
 
-const props = defineProps<{
-  id: string;
-}>();
+const props = withDefaults(
+  defineProps<{
+    id: string;
+    closable: boolean;
+  }>(),
+  {
+    closable: true,
+  }
+);
 
 const emit = defineEmits<{
   (e: 'open', id: string): void;
+  (e: 'closed', id: string): void;
 }>();
 
 const { toggleItem, isItemOpen } = useAccordion();
 const open = computed(() => isItemOpen(props.id));
 
 function onHeaderClick() {
-  toggleItem(props.id);
+  if (!open.value || props.closable) {
+    toggleItem(props.id);
 
-  if (open.value) {
-    emit('open', props.id);
+    if (open.value) {
+      emit('open', props.id);
+    } else {
+      emit('closed', props.id);
+    }
   }
 }
 
@@ -94,7 +105,7 @@ function onLeave(el: Element) {
 
 <style scoped>
 .accordion-item + .accordion-item {
-  border-top: 1px solid var(--pp-secondary-color);
+  border-top: 1px solid var(--pp-secondary-light-color);
 }
 
 .accordion-header {
@@ -104,9 +115,9 @@ function onLeave(el: Element) {
   width: 100%;
   padding: 1rem;
   font-weight: bold;
-  background: var(--pp-secondary-light-color);
   border: none;
   cursor: pointer;
+  background: transparent;
 }
 
 .accordion-content>div {
@@ -114,12 +125,12 @@ function onLeave(el: Element) {
 }
 
 button {
-  -webkit-tap-highlight-color: transparent; /* убирает серый/синий фон на мобилках */
-  outline: none; /* убираем синюю обводку */
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
 button:active {
-  background: inherit; /* убираем смену цвета при нажатии */
+  background: inherit;
   color: inherit;
 }
 </style>

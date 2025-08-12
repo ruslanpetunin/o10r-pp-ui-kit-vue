@@ -21,6 +21,9 @@
   --pp-font-size-md: 1rem;
   --pp-font-size-lg: 1.25rem;
   --pp-font-size-xl: 1.5rem;
+  --pp-font-size-xxl: 1.75rem;
+  --pp-font-size-xxxl: 2rem;
+  --pp-font-size-xxxxl: 2.25rem;
 
   /* Font weights */
   --pp-font-weight-normal: 400;
