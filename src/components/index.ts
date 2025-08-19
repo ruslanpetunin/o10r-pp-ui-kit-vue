@@ -4,7 +4,4 @@ export { default as PPSelect } from './form/inputs/PPSelect.vue';
 export { default as PPCheckbox } from './form/inputs/PPCheckbox.vue';
 export { default as PPAccordion } from './list/Accordion/PPAccordion.vue';
 export { default as PPAccordionItem } from './list/Accordion/PPAccordionItem.vue';
-export { default as PPGrid } from './layout/PPGrid.vue';
-export { default as PPGridRow } from './layout/PPGridRow.vue';
-export { default as PPGridCol } from './layout/PPGridCol.vue';
 export { default as PPModal } from './overlay/PPModal.vue';
