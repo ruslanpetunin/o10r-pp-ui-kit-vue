@@ -21,12 +21,17 @@ const props = withDefaults(
   defineProps<{ modelValue?: boolean; closable?: boolean }>(),
   { modelValue: true, closable: true }
 );
-const emit = defineEmits<{ (e: 'update:modelValue', value: boolean): void }>();
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: boolean): void,
+  (e: 'close'): void,
+}>();
 
 function handleClose() {
   if (props.closable) {
     emit('update:modelValue', false);
   }
+
+  emit('close');
 }
 </script>
 
