@@ -113,7 +113,7 @@ function onLeave(el: Element) {
   justify-content: start;
   align-items: center;
   width: 100%;
-  padding: 1rem;
+  padding: var(--pp-gap-md);
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -121,7 +121,7 @@ function onLeave(el: Element) {
 }
 
 .accordion-content>div {
-  padding: 1rem;
+  padding: var(--pp-gap-md);
 }
 
 button {
