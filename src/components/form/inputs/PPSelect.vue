@@ -39,7 +39,6 @@ const emit = defineEmits<{
 }>();
 
 const id = `select-${Math.random().toString(36).substring(2, 10)}`;
-const isFocused = ref(false);
 const hasError = computed(() => !!props.error);
 const valueRef = ref<string>(props.value || '');
 

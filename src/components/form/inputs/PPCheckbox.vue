@@ -4,8 +4,8 @@
       <input
         type="checkbox"
         class="checkbox-element"
-        :checked="modelValue"
-        @change="onChange"
+        :checked="value"
+        @input="onChange"
       />
       <span class="checkbox-label">{{ label }}</span>
     </label>
@@ -19,20 +19,20 @@
 import { computed } from 'vue';
 
 const props = defineProps<{
-  modelValue: boolean;
   label: string;
+  value?: boolean;
   error?: string;
 }>();
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: boolean): void;
+  (e: 'change', value: boolean): void;
 }>();
 
 const hasError = computed(() => !!props.error);
 
 function onChange(event: Event) {
   const target = event.target as HTMLInputElement;
-  emit('update:modelValue', target.checked);
+  emit('change', target.checked);
 }
 </script>
 
@@ -61,6 +61,7 @@ function onChange(event: Event) {
 .checkbox-label {
   font-size: var(--pp-font-size-md);
   color: var(--pp-text-color);
+  padding-left: var(--pp-gap-xs);
 }
 
 .error-message {
