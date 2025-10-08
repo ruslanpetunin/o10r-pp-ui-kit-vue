@@ -4,6 +4,7 @@
       <input
         type="checkbox"
         class="checkbox-element"
+        :name="name"
         :checked="value"
         @input="onChange"
       />
@@ -20,6 +21,7 @@ import { computed } from 'vue';
 
 const props = defineProps<{
   label: string;
+  name?: string;
   value?: boolean;
   error?: string;
 }>();
