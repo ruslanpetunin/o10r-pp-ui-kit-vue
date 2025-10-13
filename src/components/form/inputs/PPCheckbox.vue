@@ -4,10 +4,11 @@
       <input
         type="checkbox"
         class="checkbox-element"
+        :name="name"
         :checked="value"
         @input="onChange"
       />
-      <span class="checkbox-label">{{ label }}</span>
+      <span class="checkbox-label" v-html="safetyLabelHtml" />
     </label>
     <div class="error-message">
       <span v-if="hasError">{{ error }}</span>
@@ -16,10 +17,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+import useMarkdown from '../../../composables/useMarkdown';
 
 const props = defineProps<{
   label: string;
+  name?: string;
   value?: boolean;
   error?: string;
 }>();
@@ -29,6 +32,12 @@ const emit = defineEmits<{
 }>();
 
 const hasError = computed(() => !!props.error);
+
+const safetyLabelHtml = ref<string>('')
+
+onMounted(async () => {
+  safetyLabelHtml.value = await useMarkdown(props.label)
+})
 
 function onChange(event: Event) {
   const target = event.target as HTMLInputElement;
