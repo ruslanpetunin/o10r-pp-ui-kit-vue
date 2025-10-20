@@ -8,7 +8,7 @@
         :checked="value"
         @input="onChange"
       />
-      <span class="checkbox-label" v-html="safetyLabelHtml" />
+      <PPMarkdown class="checkbox-label" :content="label" />
     </label>
     <div class="error-message">
       <span v-if="hasError">{{ error }}</span>
@@ -17,8 +17,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
-import useMarkdown from '../../../composables/useMarkdown';
+import { computed } from 'vue';
+import PPMarkdown from "./../../PPMarkdown.vue";
 
 const props = defineProps<{
   label: string;
@@ -32,12 +32,6 @@ const emit = defineEmits<{
 }>();
 
 const hasError = computed(() => !!props.error);
-
-const safetyLabelHtml = ref<string>('')
-
-onMounted(async () => {
-  safetyLabelHtml.value = await useMarkdown(props.label)
-})
 
 function onChange(event: Event) {
   const target = event.target as HTMLInputElement;
@@ -71,6 +65,7 @@ function onChange(event: Event) {
   font-size: var(--pp-font-size-md);
   color: var(--pp-text-color);
   padding-left: var(--pp-gap-xs);
+  display: inline-block;
 }
 
 .error-message {
